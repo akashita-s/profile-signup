@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/Home.module.css'
 import {changeStep} from '../features/step'
 import axios from 'axios';
+import { login } from '../features/user';
 
 function EnterOTP() {
     const router = useRouter();
@@ -13,8 +14,7 @@ function EnterOTP() {
     const dispatch = useDispatch()
     const onclicklink = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      dispatch(changeStep({name: 'signup'}))
-
+    
       axios.put("https://hiring.getbasis.co/candidate/users/email/verify", 
       {
         "email":email,
@@ -23,7 +23,11 @@ function EnterOTP() {
       } )
         .then(function (response) {
           
-          console.log(response)
+          console.log(response.data.results.user)
+          dispatch(login({name: response.data.results.user.firstName, email: email, number: response.data.results.user.phoneNumber}))
+          const check = response.data.results.isLogin
+          check ? dispatch(changeStep({name: 'dashboard'})) : dispatch(changeStep({name: 'signup'}))
+         
         })
         .catch(function (error) {
           // handle error

@@ -4,6 +4,8 @@ import EnterEmail from "../src/components/EnterEmail";
 import EnterOTP from "../src/components/EnterOTP";
 import SignUp from "../src/components/SignUp";
 import { useSelector } from 'react-redux'
+import Form from "../src/components/Form";
+import Dashboard from "../src/components/Dashboard";
 
 const Home: NextPage = () => {
  
@@ -25,9 +27,18 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <SignUp />
-    </div>
+    </div>)
+    if (currentStep == 'form')
+    return (
+      <div className={styles.container}>
+        <Form />
+      </div>
   );
-  else return null
+  else return (
+    <div className={styles.container}>
+      <Dashboard />
+    </div>
+);
 };
 
 export default Home;
