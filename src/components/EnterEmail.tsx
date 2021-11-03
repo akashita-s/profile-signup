@@ -32,8 +32,8 @@ function EnterEmail() {
       };
 
     return (
-        <div className={styles.container}>
-        <form onSubmit={(e) => {onclicklink(e)}}>
+        <div >
+        <form className={styles.container} onSubmit={(e) => {onclicklink(e)}}>
           <h1>Enter Email: </h1>
           <input className={styles.input} autoFocus type='email' placeholder="Enter a valid email" onChange={(e) => setEmail(e.target.value)}></input>
           <button

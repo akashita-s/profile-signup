@@ -60,15 +60,16 @@ function EnterOTP() {
     }
 
   return (
-    <div className={styles.container}>
-      <form onSubmit={(e) => {onclicklink(e)}}>
+    <div >
+      <form action="submit" method="get" onSubmit={(e) => {onclicklink(e)}}>
        <h1>Enter Otp: </h1>
-       <input className={styles.input} autoFocus placeholder='Enter six digit number' onChange={(e) => setVerificationCode(e.target.value)}></input>
+       <input className={styles.input} autoFocus placeholder='Enter six digit number' type='number' onChange={(e) => setVerificationCode(e.target.value)}></input>
        <div>
-            <button type='button' className={styles.button} onClick={() => {onResend}} >Resend</button>
-            <button  type='submit' className={styles.button} onClick={() => {onclicklink}}>Submit</button>
+          <button value='submit' name='submit' type='submit' formAction='submit' formMethod='get' className={styles.button} onClick={() => {onclicklink}}>Submit</button>
        </div>
        </form>  
+
+       <button value='resend' name='resend' type='reset' formAction='resend' formMethod='put' className={styles.button} onClick={() => {onResend}} >Resend</button>
     </div>
   )
 }
