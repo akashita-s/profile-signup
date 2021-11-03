@@ -23,11 +23,9 @@ function EnterEmail() {
           dispatch(changeStep({name: 'otp'})) 
         })
         .catch(function (error) {
-          // handle error
           console.log(error);
         })
         .then(function () {
-          // always executed
         });
 
         
@@ -37,12 +35,12 @@ function EnterEmail() {
         <div className={styles.container}>
         <form onSubmit={(e) => {onclicklink(e)}}>
           <h1>Enter Email: </h1>
-          <input className={styles.input} type='email' placeholder="Enter a valid email" onChange={(e) => setEmail(e.target.value)}></input>
+          <input className={styles.input} autoFocus type='email' placeholder="Enter a valid email" onChange={(e) => setEmail(e.target.value)}></input>
           <button
             className={styles.button}
             type="submit"
           >
-            Send OTP
+            Verify Email
           </button>
       </form>
     </div>

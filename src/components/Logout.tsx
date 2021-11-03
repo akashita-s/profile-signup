@@ -11,7 +11,7 @@ const onClickButton = () => {
     dispatch(logout())
     axios.delete('https://hiring.getbasis.co/candidate/users/logout/5f81f1448a2299e0fabd6bdf')
     .then(function (response) {
-        console.log(response);
+        console.log(response.data.message);
     })
     .catch(function (error) {
         console.log(error);

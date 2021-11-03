@@ -1,14 +1,13 @@
 import React, { FormEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../features/user'
-import {changeStepAgain} from "../features/stepagain"
 import styles from '../../styles/Home.module.css'
 import axios from 'axios'
+import { changeStep } from '../features/step'
 
 function Form() {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
-    const [emailInput, setEmailInput] = useState('')
     const email = useSelector((state) => state.email.value)
     const token = useSelector((state) => state.token.value)
     const [referal, setReferal] = useState('')
@@ -17,7 +16,7 @@ function Form() {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         dispatch(login({name: name, email: email, number: number}))
-        dispatch(changeStepAgain({name: "dashboard"}))
+        dispatch(changeStep({name: "dashboard"}))
 
 
         axios.post("https://hiring.getbasis.co/candidate/users", 

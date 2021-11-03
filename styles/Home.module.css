@@ -1,5 +1,5 @@
 .container {
-  padding: 8rem;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,6 +12,12 @@
   display: flex;
 }
 
+.name{
+  color: aliceblue;
+  margin-left: 2rem;
+
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -20,6 +26,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.navigation{
+  width: 100%;
+  background-color: blueviolet;
+  height: 6rem;
+  margin-bottom: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
