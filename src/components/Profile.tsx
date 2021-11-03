@@ -3,7 +3,7 @@ import styles from '../../styles/extra.module.css'
 import { useSelector } from 'react-redux'
 
 function Profile() {
-    const user = useSelector((state) => state.user.value)
+    const user = useSelector((state: any) => state.user.value)
     return (
         <div >
             <h1 className={styles.heading}>

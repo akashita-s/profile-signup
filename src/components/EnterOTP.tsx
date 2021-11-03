@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import React, { FormEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/Home.module.css'
@@ -7,10 +6,9 @@ import axios from 'axios';
 import { login } from '../features/user';
 
 function EnterOTP() {
-    const router = useRouter();
     const [verificationCode, setVerificationCode] = useState('')
-    const token = useSelector((state) => state.token.value)
-    const email = useSelector((state) => state.email.value)
+    const token = useSelector((state: any) => state.token.value)
+    const email = useSelector((state: any) => state.email.value)
     const dispatch = useDispatch()
     const onclicklink = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -23,14 +21,24 @@ function EnterOTP() {
       } )
         .then(function (response) {
           
-          console.log(response.data.results.user)
-          
-          const check = response.data.results.isLogin
+          if(response.data.sucess == false) {
+          const count = response.data.messageObj.wrongEmailTokenCount
+          const message = response.data.message
+          alert(message)
+
+          if (count > 2){
+            dispatch(changeStep({name: 'email'}));
+            
+          } }
+
+          else
+
+         { const check = response.data.results.isLogin
           if (check== true){ 
             dispatch(login({name: response.data.results.user.firstName, email: email, number: response.data.results.user.phoneNumber}))
             dispatch(changeStep({name: 'dashboard'}))}
           else
-          dispatch(changeStep({name: 'signup'}))
+          dispatch(changeStep({name: 'signup'}))}
          
         })
         .catch(function (error) {
@@ -48,6 +56,7 @@ function EnterOTP() {
       <form onSubmit={(e) => {onclicklink(e)}}>
        <h1>Enter Otp: </h1>
        <input className={styles.input} autoFocus placeholder='Enter six digit number' onChange={(e) => setVerificationCode(e.target.value)}></input>
+       <p></p>
        <div>
             <button type='reset' className={styles.button} >Resend</button>
             <button  type='submit' className={styles.button} onClick={() => {onclicklink}}>Submit</button>

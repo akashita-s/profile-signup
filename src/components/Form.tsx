@@ -8,8 +8,8 @@ import { changeStep } from '../features/step'
 function Form() {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
-    const email = useSelector((state) => state.email.value)
-    const token = useSelector((state) => state.token.value)
+    const email = useSelector((state: any) => state.email.value)
+    const token = useSelector((state : any) => state.token.value)
     const [referal, setReferal] = useState('')
     const dispatch = useDispatch()
 

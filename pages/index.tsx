@@ -9,7 +9,7 @@ import NavigationBar from "../src/components/NavigationBar";
 
 const Home: NextPage = () => {
  
-  const currentStep = useSelector((state) => state.step.value.name)
+  const currentStep = useSelector((state: any) => state.step.value.name)
 
   const Step = () => {
     if (currentStep == 'email')
