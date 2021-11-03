@@ -1,5 +1,5 @@
 import React from 'react'
-import Login from './Login'
+import Login from './Logout'
 import Profile from './Profile'
 import styles from '../../styles/Home.module.css'
 
