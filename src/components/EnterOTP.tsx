@@ -21,24 +21,27 @@ function EnterOTP() {
       } )
         .then(function (response) {
           
-          if(response.data.sucess == false) {
-          const count = response.data.messageObj.wrongEmailTokenCount
+          const success = response.data.success
+
+          if (success== true){
+            
+          const check = response.data.results.isLogin
+
+          if (check== true){ 
+            dispatch(login({name: response.data.results.user.firstName, email: email, number: response.data.results.user.phoneNumber}))
+            dispatch(changeStep({name: 'dashboard'}))}
+          else
+          dispatch(changeStep({name: 'signup'}))}
+          else {
+            const count = response.data.messageObj.wrongEmailTokenCount
           const message = response.data.message
           alert(message)
 
           if (count > 2){
             dispatch(changeStep({name: 'email'}));
             
-          } }
-
-          else
-
-         { const check = response.data.results.isLogin
-          if (check== true){ 
-            dispatch(login({name: response.data.results.user.firstName, email: email, number: response.data.results.user.phoneNumber}))
-            dispatch(changeStep({name: 'dashboard'}))}
-          else
-          dispatch(changeStep({name: 'signup'}))}
+          } 
+          }
          
         })
         .catch(function (error) {
