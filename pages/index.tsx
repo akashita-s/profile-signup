@@ -35,6 +35,8 @@ const Home: NextPage = () => {
         <Dashboard />
       </div>
   );
+
+  
   }
   
 

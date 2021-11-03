@@ -18,7 +18,6 @@ function Form() {
         dispatch(login({name: name, email: email, number: number}))
         dispatch(changeStep({name: "dashboard"}))
 
-
         axios.post("https://hiring.getbasis.co/candidate/users", 
         {
           "firstName": name, 
