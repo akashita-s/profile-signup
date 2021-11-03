@@ -8,8 +8,9 @@ import axios from 'axios'
 function Form() {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
-    const [email, setEmail] = useState('')
-    
+    const [emailInput, setEmailInput] = useState('')
+    const email = useSelector((state) => state.email.value)
+    const token = useSelector((state) => state.token.value)
     const [referal, setReferal] = useState('')
     const dispatch = useDispatch()
 
@@ -21,15 +22,15 @@ function Form() {
 
         axios.post("https://hiring.getbasis.co/candidate/users", 
         {
-          "firstName": "Akashita", 
-          "email": "akashita@gmail.com", 
-          "referredCodeKey": "AKASHI",
+          "firstName": name, 
+          "email": email, 
+          "referredCodeKey": referal,
           "agreeToPrivacyPolicy": true,
-          "token": "1608885507243",
+          "token": token,
           "source": "WEB_APP"
   } )
         .then(function (response) {
-          console.log(response.data.results); 
+          console.log(response); 
         })
         .catch(function (error) {
           console.log(error);
@@ -45,15 +46,15 @@ function Form() {
         <form onSubmit={(e) => {handleSubmit(e)}}>
             <div>
                 <p>Enter Name: </p>
-                <input className={styles.input} type='name' placeholder='Enter a valid name' required onChange={(event) => {setName(event.target.value)}}></input>
+                <input className={styles.input} type='name' autoFocus placeholder='Enter a valid name' required onChange={(event) => {setName(event.target.value)}}></input>
             </div>
             <div>
                 <p>Enter Number: </p>
-                <input className={styles.input} type='number'  placeholder='Enter a valid number' onChange={(event) => {setNumber(event.target.value)}}></input>
+                <input className={styles.input} type='number' placeholder='Enter a valid number' onChange={(event) => {setNumber(event.target.value)}}></input>
             </div>
             <div>
                 <p>Enter Email: </p>
-                <input className={styles.input} type='email'  placeholder={email}  required onChange={(event) => {setEmail(event.target.value)}}></input>
+                <input className={styles.input} type='email' disabled placeholder={email} ></input>
             </div>
             <div>
                 <p>Referal Code: </p>

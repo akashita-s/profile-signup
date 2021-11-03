@@ -26,7 +26,7 @@ const Home: NextPage = () => {
   if (currentStep == 'signup')
   return (
     <div className={styles.container}>
-      <SignUp />
+      <Form />
     </div>)
     if (currentStep == 'form')
     return (

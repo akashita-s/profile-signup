@@ -24,9 +24,13 @@ function EnterOTP() {
         .then(function (response) {
           
           console.log(response.data.results.user)
-          dispatch(login({name: response.data.results.user.firstName, email: email, number: response.data.results.user.phoneNumber}))
+          
           const check = response.data.results.isLogin
-          check ? dispatch(changeStep({name: 'dashboard'})) : dispatch(changeStep({name: 'signup'}))
+          if (check== true){ 
+            dispatch(login({name: response.data.results.user.firstName, email: email, number: response.data.results.user.phoneNumber}))
+            dispatch(changeStep({name: 'dashboard'}))}
+          else
+          dispatch(changeStep({name: 'signup'}))
          
         })
         .catch(function (error) {

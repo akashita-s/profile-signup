@@ -1,9 +1,6 @@
 import React from 'react'
 import styles from '../../styles/extra.module.css'
 import { useSelector } from 'react-redux'
-import axios from 'axios'
-
-
 
 function Profile() {
     const user = useSelector((state) => state.user.value)
