@@ -13,37 +13,27 @@ const Home: NextPage = () => {
 
   const Step = () => {
     if (currentStep == 'email')
-    return (
-      <div className={styles.container}>
-        <EnterEmail />
-      </div>
-    );
+    return <EnterEmail />
+      
     if (currentStep == 'otp')
-    return (
-      <div className={styles.container}>
-        <EnterOTP />
-      </div>
-    );
+    return <EnterOTP />
+       
     if (currentStep == 'signup')
-    return (
-      <div className={styles.container}>
-        <Form />
-      </div>)
+    return <Form />
   
     else return (
-      <div className={styles.container}>
         <Dashboard />
-      </div>
+      
   );
 
-  
   }
   
-
   return(
     <div >
       <NavigationBar/>
-      <Step />
+      <div className={styles.container}>
+        <Step />
+      </div>
     </div>
   )
   

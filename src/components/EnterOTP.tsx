@@ -24,7 +24,7 @@ function EnterOTP() {
           const success = response.data.success
 
           if (success== true){
-            
+
           const check = response.data.results.isLogin
 
           if (check== true){ 
@@ -55,18 +55,20 @@ function EnterOTP() {
 
     }
 
+    const onResend = (e: FormEvent<HTMLFormElement>) => {
+       console.log('hi')
+    }
+
   return (
     <div className={styles.container}>
       <form onSubmit={(e) => {onclicklink(e)}}>
        <h1>Enter Otp: </h1>
        <input className={styles.input} autoFocus placeholder='Enter six digit number' onChange={(e) => setVerificationCode(e.target.value)}></input>
-       <p></p>
        <div>
-            <button type='reset' className={styles.button} >Resend</button>
+            <button type='button' className={styles.button} onClick={() => {onResend}} >Resend</button>
             <button  type='submit' className={styles.button} onClick={() => {onclicklink}}>Submit</button>
        </div>
-       </form>
-       
+       </form>  
     </div>
   )
 }
